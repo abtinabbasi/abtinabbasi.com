@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "switchTo": "Switch to English"
+  },
+  "nav": {
+    "primary": "Principale",
+    "companies": "Entreprises"
+  },
+  "hero": {
+    "subtitle": "Homme d'affaires · Athlète d'Équipe Canada"
+  },
+  "companies": {
+    "title": "Entreprises",
+    "empty": "Rien à signaler pour l'instant.",
+    "role": "Rôle",
+    "founders": "Fondateurs",
+    "based": "Basée à",
+    "follow": "Suivre"
+  }
+}
