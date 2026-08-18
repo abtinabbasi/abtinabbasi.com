@@ -1,0 +1,17 @@
+# Normalize to LF in the repository regardless of contributor platform.
+* text=auto eol=lf
+
+# Binary assets must never be line-ending converted.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.webp binary
+*.avif binary
+*.ico  binary
+*.woff binary
+*.woff2 binary
+*.pdf  binary
+
+# Generated — collapse in diffs and exclude from language stats.
+package-lock.json -diff linguist-generated

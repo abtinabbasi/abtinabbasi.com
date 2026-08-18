@@ -2,7 +2,7 @@ import { site } from "@/content/site";
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-faint mb-8">
+    <h2 className="text-faint mb-8 font-mono text-[11px] tracking-[0.18em] uppercase">
       {children}
     </h2>
   );
@@ -13,13 +13,13 @@ export default function Home() {
     <main className="mx-auto w-full max-w-2xl px-6 py-20 sm:py-28">
       {/* Hero */}
       <header>
-        <h1 className="text-3xl sm:text-4xl font-medium tracking-tight">
+        <h1 className="text-3xl font-medium tracking-tight sm:text-4xl">
           {site.name}
         </h1>
-        <p className="mt-2 font-mono text-sm text-muted">
+        <p className="text-muted mt-2 font-mono text-sm">
           {site.role} · {site.location}
         </p>
-        <p className="mt-8 text-lg sm:text-xl leading-relaxed text-fg/90 text-balance">
+        <p className="text-fg/90 mt-8 text-lg leading-relaxed text-balance sm:text-xl">
           {site.tagline}
         </p>
 
@@ -47,7 +47,7 @@ export default function Home() {
       {/* About */}
       <section className="mt-20 sm:mt-28" aria-labelledby="about">
         <SectionLabel>About</SectionLabel>
-        <div className="space-y-4 leading-relaxed text-muted">
+        <div className="text-muted space-y-4 leading-relaxed">
           {site.about.map((p, i) => (
             <p key={i}>{p}</p>
           ))}
@@ -57,7 +57,7 @@ export default function Home() {
       {/* Work */}
       <section className="mt-20 sm:mt-28" aria-labelledby="work">
         <SectionLabel>Work</SectionLabel>
-        <ul className="divide-y divide-line border-y border-line">
+        <ul className="divide-line border-line divide-y border-y">
           {site.work.map((w) => (
             <li key={`${w.org}-${w.period}`} className="py-5">
               <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
@@ -65,11 +65,11 @@ export default function Home() {
                   {w.role}{" "}
                   <span className="text-muted font-normal">at {w.org}</span>
                 </p>
-                <p className="font-mono text-xs text-faint tabular-nums">
+                <p className="text-faint font-mono text-xs tabular-nums">
                   {w.period}
                 </p>
               </div>
-              <p className="mt-1.5 text-sm text-muted leading-relaxed">
+              <p className="text-muted mt-1.5 text-sm leading-relaxed">
                 {w.note}
               </p>
             </li>
@@ -94,18 +94,18 @@ export default function Home() {
                     {p.name}
                   </a>
                 </h3>
-                <span className="font-mono text-xs text-faint tabular-nums">
+                <span className="text-faint font-mono text-xs tabular-nums">
                   {p.year}
                 </span>
               </div>
-              <p className="mt-1.5 text-sm text-muted leading-relaxed">
+              <p className="text-muted mt-1.5 text-sm leading-relaxed">
                 {p.blurb}
               </p>
               <p className="mt-2.5 flex flex-wrap gap-1.5">
                 {p.stack.map((t) => (
                   <span
                     key={t}
-                    className="font-mono text-[11px] text-faint border border-line rounded px-1.5 py-0.5"
+                    className="text-faint border-line rounded border px-1.5 py-0.5 font-mono text-[11px]"
                   >
                     {t}
                   </span>
@@ -117,19 +117,19 @@ export default function Home() {
       </section>
 
       {/* Contact */}
-      <footer className="mt-20 sm:mt-28 pt-8 border-t border-line">
+      <footer className="border-line mt-20 border-t pt-8 sm:mt-28">
         <SectionLabel>Get in touch</SectionLabel>
-        <p className="leading-relaxed text-muted">
+        <p className="text-muted leading-relaxed">
           Best way to reach me is{" "}
           <a
             href={`mailto:${site.email}`}
-            className="text-accent underline decoration-accent/40 hover:decoration-accent"
+            className="text-accent decoration-accent/40 hover:decoration-accent underline"
           >
             {site.email}
           </a>
           .
         </p>
-        <p className="mt-10 font-mono text-xs text-faint">
+        <p className="text-faint mt-10 font-mono text-xs">
           © {new Date().getFullYear()} {site.name}
         </p>
       </footer>

@@ -4,8 +4,8 @@
   --bg: #fbfbfa;
   --surface: #ffffff;
   --fg: #16161a;
-  --muted: #6b6b73;
-  --faint: #9a9aa2;
+  --muted: #55555d;
+  --faint: #70707a;
   --line: #e6e5e1;
   --accent: #b8532f;
 }
@@ -15,8 +15,8 @@
     --bg: #0b0b0d;
     --surface: #121215;
     --fg: #ececf0;
-    --muted: #8e8e98;
-    --faint: #62626c;
+    --muted: #a0a0aa;
+    --faint: #82828c;
     --line: #232329;
     --accent: #e8734a;
   }
@@ -56,8 +56,12 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }

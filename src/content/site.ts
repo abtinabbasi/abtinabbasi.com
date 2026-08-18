@@ -9,8 +9,7 @@ export const site = {
   location: "TODO — city, country",
 
   // One or two sentences. Say what you build and who it's for.
-  tagline:
-    "I build software for the web — small, fast, and finished.",
+  tagline: "I build software for the web — small, fast, and finished.",
 
   // The longer version. 2–4 short paragraphs.
   about: [
