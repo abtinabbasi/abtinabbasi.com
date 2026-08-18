@@ -1,0 +1,20 @@
+{
+  "meta": {
+    "switchTo": "Passer au français"
+  },
+  "nav": {
+    "primary": "Primary",
+    "companies": "Companies"
+  },
+  "hero": {
+    "subtitle": "Businessman · Team Canada Athlete"
+  },
+  "companies": {
+    "title": "Companies",
+    "empty": "Nothing on record yet.",
+    "role": "Role",
+    "founders": "Founders",
+    "based": "Based",
+    "follow": "Follow"
+  }
+}

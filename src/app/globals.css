@@ -1,64 +1,185 @@
 @import "tailwindcss";
 
+/* Monochrome matte. No hue anywhere — emphasis comes from weight, spacing
+   and underline, never colour.
+
+   Every text token clears WCAG AA (4.5:1) on every canvas it can land on.
+   Worst case per theme, measured against --raised, the lightest surface:
+   light  fg 16.0 · muted 7.2 · faint 5.5
+   dark   fg 14.0 · muted 5.9 · faint 4.6
+   Re-measure before editing any of these — CI gates Lighthouse
+   accessibility at 100, and --faint has the least headroom. */
+
 :root {
-  --bg: #fbfbfa;
-  --surface: #ffffff;
-  --fg: #16161a;
-  --muted: #55555d;
-  --faint: #70707a;
-  --line: #e6e5e1;
-  --accent: #b8532f;
+  color-scheme: light;
+  --bg: #e9e7e2;
+  --surface: #f1efea;
+  --raised: #f7f5f1;
+  --fg: #1a1a19;
+  --muted: #54524d;
+  --faint: #65635e;
+  --line: #d6d3cc;
+  --accent: #2e2d2a;
+  --shadow:
+    0 1px 1px rgb(26 26 25 / 0.03), 0 10px 30px -12px rgb(26 26 25 / 0.14);
+  /* Hairline defines the edge, layered ambient gives the lift. Deliberately
+     no mat board — a lighter band around a dark photo reads as a cheap frame. */
+  --shadow-print:
+    0 0 0 1px rgb(26 26 25 / 0.1), 0 2px 4px rgb(26 26 25 / 0.1),
+    0 18px 40px -16px rgb(26 26 25 / 0.3);
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0b0b0d;
-    --surface: #121215;
-    --fg: #ececf0;
-    --muted: #a0a0aa;
-    --faint: #82828c;
-    --line: #232329;
-    --accent: #e8734a;
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0c0c0d;
+    --surface: #17171a;
+    --raised: #1a1a1c;
+    --fg: #e8e7e3;
+    --muted: #98978f;
+    --faint: #84837c;
+    --line: #232326;
+    --accent: #d2d0ca;
+    --shadow:
+      0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -14px rgb(0 0 0 / 0.85);
+    --shadow-print:
+      0 0 0 1px rgb(255 255 255 / 0.09), 0 2px 6px rgb(0 0 0 / 0.6),
+      0 22px 48px -18px rgb(0 0 0 / 0.9);
   }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c0c0d;
+  --surface: #17171a;
+  --raised: #1a1a1c;
+  --fg: #e8e7e3;
+  --muted: #98978f;
+  --faint: #84837c;
+  --line: #232326;
+  --accent: #d2d0ca;
+  --shadow:
+    0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -14px rgb(0 0 0 / 0.85);
+  --shadow-print:
+    0 0 0 1px rgb(255 255 255 / 0.09), 0 2px 6px rgb(0 0 0 / 0.6),
+    0 22px 48px -18px rgb(0 0 0 / 0.9);
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-surface: var(--surface);
+  --color-raised: var(--raised);
   --color-fg: var(--fg);
   --color-muted: var(--muted);
   --color-faint: var(--faint);
   --color-line: var(--line);
   --color-accent: var(--accent);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-html {
-  scroll-behavior: smooth;
+  /* The native UI stack, as used by LinkedIn. No web fonts are loaded. */
+  --font-sans:
+    system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu,
+    Oxygen, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-display: var(--font-sans);
+  --font-mono:
+    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono",
+    monospace;
 }
 
 body {
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
 ::selection {
-  background: var(--accent);
+  background: var(--fg);
   color: var(--bg);
 }
 
-a {
-  text-underline-offset: 3px;
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ── Custom cursor ────────────────────────────────────────────
+   Only on devices with a precise pointer, and only once the script
+   has mounted — without JS the native cursor is untouched. Keyboard
+   focus is unaffected, so nothing here costs accessibility. */
+
+@media (pointer: fine) {
+  html[data-cursor="on"],
+  html[data-cursor="on"] *:not(input):not(textarea) {
+    cursor: none;
+  }
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  border-radius: 9999px;
+  will-change: transform;
+}
+
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  background: var(--fg);
+}
+
+.cursor-ring {
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 1px solid var(--fg);
+  opacity: 0.45;
+  transition:
+    width 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    height 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    margin 220ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 220ms ease,
+    background-color 220ms ease;
+}
+
+/* Grows over anything clickable. */
+html[data-cursor-active="1"] .cursor-ring {
+  width: 52px;
+  height: 52px;
+  margin: -26px 0 0 -26px;
+  opacity: 0.9;
+  background: color-mix(in srgb, var(--fg) 8%, transparent);
+}
+
+/* Theme-conditional visibility, same cascade as the tokens. */
+.on-dark {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .on-light {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .on-dark {
+    display: revert;
+  }
+}
+
+:root[data-theme="dark"] .on-light {
+  display: none;
+}
+:root[data-theme="dark"] .on-dark {
+  display: revert;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   *,
   *::before,
   *::after {
