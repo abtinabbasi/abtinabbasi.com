@@ -6,6 +6,7 @@
       "url": [
         "http://localhost:3005/en",
         "http://localhost:3005/en/companies",
+        "http://localhost:3005/en/contact",
         "http://localhost:3005/fr"
       ],
       "numberOfRuns": 1,

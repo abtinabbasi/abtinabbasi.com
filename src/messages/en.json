@@ -4,7 +4,8 @@
   },
   "nav": {
     "primary": "Primary",
-    "companies": "Companies"
+    "companies": "Companies",
+    "contact": "Get in touch"
   },
   "hero": {
     "subtitle": "Businessman · Team Canada Athlete"
@@ -16,5 +17,10 @@
     "founders": "Founders",
     "based": "Based",
     "follow": "Follow"
+  },
+  "contact": {
+    "title": "Get in touch",
+    "intro": "Business ideas, partnerships, or something worth building.",
+    "reveal": "Show email address"
   }
 }
