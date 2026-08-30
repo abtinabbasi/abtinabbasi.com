@@ -4,7 +4,8 @@
   },
   "nav": {
     "primary": "Principale",
-    "companies": "Entreprises"
+    "companies": "Entreprises",
+    "contact": "Me contacter"
   },
   "hero": {
     "subtitle": "Homme d'affaires · Athlète d'Équipe Canada"
@@ -16,5 +17,10 @@
     "founders": "Fondateurs",
     "based": "Basée à",
     "follow": "Suivre"
+  },
+  "contact": {
+    "title": "Me contacter",
+    "intro": "Idées d'affaires, partenariats, ou quelque chose à bâtir.",
+    "reveal": "Afficher l'adresse courriel"
   }
 }

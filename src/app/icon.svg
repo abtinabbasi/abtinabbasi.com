@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- No <style> and no font file: the glyph is drawn with whatever colour
+       emoji font the reader already has, so the icon looks native on every
+       platform and the file stays under 200 bytes. favicon.ico next to this
+       covers browsers that don't take SVG icons. -->
+  <text x="16" y="17" font-size="27" text-anchor="middle" dominant-baseline="central">👋</text>
+</svg>

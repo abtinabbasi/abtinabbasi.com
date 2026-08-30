@@ -17,7 +17,10 @@ export function SiteNav({
 }) {
   const pathname = usePathname();
 
-  const tabs = [{ href: `/${locale}/companies`, label: dict.nav.companies }];
+  const tabs = [
+    { href: `/${locale}/companies`, label: dict.nav.companies },
+    { href: `/${locale}/contact`, label: dict.nav.contact },
+  ];
 
   return (
     // Floating and detached — the canvas shows through around it.

@@ -4,7 +4,7 @@ import { locales } from "@/i18n/config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const paths = ["", "/companies"];
+  const paths = ["", "/companies", "/contact"];
 
   return locales.flatMap((locale) =>
     paths.map((path) => ({
